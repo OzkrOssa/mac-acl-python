@@ -2,7 +2,7 @@
 name = "mac-acl"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Oscar Ossa <oskrlex17@gmail.com>"]
 readme = "README.md"
 packages = [{include = "mac_acl"}]
 
