@@ -12,6 +12,7 @@ routeros-api = "^0.17.0"
 macaddress = "^2.0.2"
 paramiko = "^2.12.0"
 python-decouple = "^3.6"
+typer = {extras = ["all"], version = "^0.7.0"}
 
 
 [tool.poetry.group.dev.dependencies]
@@ -20,3 +21,6 @@ autopep8 = "^2.0.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+dev = "mac_acl:app.py"

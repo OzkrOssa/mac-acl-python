@@ -1,5 +1,6 @@
 import routeros_api
 import macaddress
+from settings import AP
 
 
 class MAC(macaddress.MAC):

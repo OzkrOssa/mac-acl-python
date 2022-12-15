@@ -1,5 +1,6 @@
 import paramiko
 import macaddress
+from settings import AP
 
 
 class MAC(macaddress.MAC):
@@ -8,6 +9,7 @@ class MAC(macaddress.MAC):
      ) + macaddress.MAC.formats
 
 class UbiquitiACL:
+    """Construct SSH connection"""
     def __init__(self,host) -> None:
         self.host = host
         self.ubnt = paramiko.SSHClient()
@@ -19,6 +21,7 @@ class UbiquitiACL:
         self.data = stdout.readlines()
 
     def add_mac(self, mac , comment):
+        """Calcule last mac acl added from list"""
         last_number = 0
         for x in self.data:
             if x.startswith("wireless.1.mac_acl."):
@@ -29,7 +32,7 @@ class UbiquitiACL:
                 pass
     
         command = f"echo -e 'wireless.1.mac_acl.{last_number+1}.mac={mac}\nwireless.1.mac_acl.{last_number+1}.comment={comment}\nwireless.1.mac_acl.{last_number+1}.status=enabled' >> /tmp/system.cfg"
-
+        """Execute the command that registre mac to file /tmp/system.cfg into ubiquiti device"""
         try:
             self.ubnt.exec_command(command)
             return {"message":"mac-address registered succesfully"}
