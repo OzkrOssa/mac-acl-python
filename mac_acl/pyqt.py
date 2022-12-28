@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox
-from UbiquitiACL import UbiquitiACL
+from ubuquiti import UbiquitiACL
 
 # Crea la ventana principal
 ventana = QWidget()

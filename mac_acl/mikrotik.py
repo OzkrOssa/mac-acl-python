@@ -1,6 +1,6 @@
 import routeros_api
 import macaddress
-from settings import AP
+from mac_acl.settings import AP
 
 
 class MAC(macaddress.MAC):
@@ -16,6 +16,7 @@ class  MikrotikACL:
     def add_mac(self, mac, comment: str):
         try:
             self.api.get_binary_resource('/interface/wireless/access-list').call("add",{"mac-address":str(MAC(mac)).encode(), "comment":comment.encode()})
+            return {"message": f"mac-address {mac} regisreted successfully "}
         except Exception as e:
             return {"error": e.args[0]}
 

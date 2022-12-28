@@ -1,6 +1,6 @@
 import paramiko
 import macaddress
-from settings import AP
+from mac_acl.settings import AP
 
 
 class MAC(macaddress.MAC):
@@ -35,8 +35,6 @@ class UbiquitiACL:
         """Execute the command that registre mac to file /tmp/system.cfg into ubiquiti device"""
         try:
             self.ubnt.exec_command(command)
-            return {"message":"mac-address registered succesfully"}
+            return {"message": f"mac-address {mac} regisreted successfully "}
         except Exception as e:
             return {"error": e.args[0]}
-
-print(UbiquitiACL("192.168.88.44").add_mac("44:D9:E7:62:F8:F6","Oscar Ossa"))
